@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.22">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{15E4DFA8-FFF4-4ED9-89D7-39222DD1B28B}" AutoDeleteType="true">DB_CycleTime</Name>
+			<BitSize>1472</BitSize>
+			<SubItem>
+				<Name>ID_CycleTime</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CellActual</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CellUltimo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>StringActual</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>StringUltimo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PanelActual</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PanelUltimo</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Puesto</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>18</Elements>
+				</ArrayInfo>
+				<BitSize>576</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TimeStamp</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>800</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{03DC7808-2E43-4481-817D-E85BCC70AE0D}" AutoDeleteType="true">Sold_Process</Name>
+			<BitSize>48</BitSize>
+			<SubItem>
+				<Name>iPirometer</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment>
+					<![CDATA[Nº de pirometro asociado al proceso]]>
+				</Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bCellInPirometerRange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[La célula está dentro de la zona del pirómetro asociado al proceso]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bEndProcess</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Proceso de soldadura terminado para el cabezal seleccionado]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bEndFixPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Parte del proceso realizado a potencia fija completado]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{DE4F1EEF-F458-4D8F-9B04-973AAD704DA0}" AutoDeleteType="true">IR_Lamp_Control</Name>
+			<BitSize>160</BitSize>
+			<SubItem>
+				<Name>bEnable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Habilita funcionamiento del cabezal]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iOperation</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment>
+					<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+				</Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nPirometro</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment>
+					<![CDATA[Nº de pirómetro asociado al proceso]]>
+				</Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetTemp</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<Comment>
+					<![CDATA[Tª de set asociada]]>
+				</Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PreheatPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment>
+					<![CDATA[Preheating power]]>
+				</Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CoolPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment>
+					<![CDATA[Cooling power]]>
+				</Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>112</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bStartPreheat</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Start preheating step on each process]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bStartSoldPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Start soldering step on each process at fix power]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>136</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bStartSoldPID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[Start soldering temperature regulation]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>144</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{0DF45142-22B2-466F-8521-D4066D1ED224}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{94E945CC-E0D6-4B03-9E6C-258BB8178D53}" AutoDeleteType="true">DUT_SolderingData</Name>
+			<BitSize>2336</BitSize>
+			<SubItem>
+				<Name>M_Auto</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>1</Elements>
+				</ArrayInfo>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SoldProcess</Name>
+				<Type GUID="{03DC7808-2E43-4481-817D-E85BCC70AE0D}">Sold_Process</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[Datos asociados a cada una de las fases del proceso de soldadura]]>
+				</Comment>
+				<BitSize>144</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SoldControl</Name>
+				<Type GUID="{DE4F1EEF-F458-4D8F-9B04-973AAD704DA0}">IR_Lamp_Control</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>5</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[Datos asociados a cada uno de los controles de las lámparas IR]]>
+				</Comment>
+				<BitSize>800</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HMIProcessPirometer</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, Tª del pirometro asociado a cada proceso]]>
+				</Comment>
+				<BitSize>96</BitSize>
+				<BitOffs>960</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HMIProcessPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, Potencia real de cada cabezal de soldadura]]>
+				</Comment>
+				<BitSize>48</BitSize>
+				<BitOffs>1056</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HMICellPirometer</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>4</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, Tº de los pirómetros]]>
+				</Comment>
+				<BitSize>128</BitSize>
+				<BitOffs>1120</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>rConsignaCalor</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[Consigna de calor, area Tª-Tiempo, para terminar el proceso]]>
+				</Comment>
+				<BitSize>96</BitSize>
+				<BitOffs>1248</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>rCalorCelula</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<BitSize>96</BitSize>
+				<BitOffs>1344</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>HMIActualTemp</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>7</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, Temperatura dada por el termopar]]>
+				</Comment>
+				<BitSize>224</BitSize>
+				<BitOffs>1440</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TipoCelula</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>1664</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{F8A8AA0A-8B06-4168-AC4D-298B6382D99A}" AutoDeleteType="true">DB_ProductionData</Name>
+			<BitSize>1344</BitSize>
+			<SubItem>
+				<Name>ID_ProductionData</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PiezaOK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>2</Elements>
+				</ArrayInfo>
+				<BitSize>64</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PiezaNOK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>2</Elements>
+				</ArrayInfo>
+				<BitSize>64</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TiempoEsp</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TiempoAlarma</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TiempoStop</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>224</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TiempoMarcha</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Tiempo_Registros</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>288</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TimeStamp</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Maq_OK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[HMI, Condiciones  generales de máquina (seguridades, hardware, ...)]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>968</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>M_Auto</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment>
+					<![CDATA[HMI, Máquina en funcionamiento automático]]>
+				</Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>976</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PartOK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, [1]-Contador parcial de células OK; [2]-Contador parcial de strings OK; [3]-Contador parcial de paneles OK; ]]>
+				</Comment>
+				<BitSize>96</BitSize>
+				<BitOffs>992</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PartNOK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>2</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, [1]-Contador parcial de células rechazadas en visión; [2]-Contador parcial de strings rechazados en stringcheck;]]>
+				</Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PartTotal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, [1]- Contador total de células; [2]-Contador total de strings; [3]-Contador total de paneles; ]]>
+				</Comment>
+				<BitSize>96</BitSize>
+				<BitOffs>1152</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PartTime</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment>
+					<![CDATA[HMI, [1]- Tiempo de ciclo de la última célula; [2]- Tiempo de ciclo del último string; [3]- Tiempo de ciclo del último panel;]]>
+				</Comment>
+				<BitSize>96</BitSize>
+				<BitOffs>1248</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{52664FD5-1D23-41A3-A1AE-6429D14648F8}" AutoDeleteType="true">IPC_Alarm</Name>
+			<BitSize>608</BitSize>
+			<SubItem>
+				<Name>AlarmG</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>19</Elements>
+				</ArrayInfo>
+				<BitSize>304</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AlarmL</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>19</Elements>
+				</ArrayInfo>
+				<BitSize>304</BitSize>
+				<BitOffs>304</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{5AF2B0F3-E462-442F-AB16-1587381A4660}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Licenses>
+				<Target>
+					<ManualSelect>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="2" Priority="20" CycleTime="100000" AmsPort="350">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{313F4BD7-BE48-460D-AC86-A7F2D8E9C25C}" Name="PLC_TFM" PrjFilePath="PLC_TFM\PLC_TFM.plcproj" TmcFilePath="PLC_TFM\PLC_TFM.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC_TFM\PLC_TFM.tmc">
+					<Name>PLC_TFM Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>GVL.st_cycletime</Name>
+							<Comment>
+								<![CDATA[===========================================
+				STRUCTURE 
+	=============================================
+CYCLE DATA STRUCT]]>
+							</Comment>
+							<Type GUID="{15E4DFA8-FFF4-4ED9-89D7-39222DD1B28B}">DB_CycleTime</Type>
+						</Var>
+						<Var>
+							<Name>GVL.st_solderingData</Name>
+							<Comment>
+								<![CDATA[SOLDERING DATA STRUCT]]>
+							</Comment>
+							<Type GUID="{94E945CC-E0D6-4B03-9E6C-258BB8178D53}">DUT_SolderingData</Type>
+							<SubVar>
+								<Name>SoldProcess</Name>
+								<Comment>
+									<![CDATA[Datos asociados a cada una de las fases del proceso de soldadura]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[1]^iPirometer</Name>
+								<Comment>
+									<![CDATA[Nº de pirometro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[1]^bCellInPirometerRange</Name>
+								<Comment>
+									<![CDATA[La célula está dentro de la zona del pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[1]^bEndProcess</Name>
+								<Comment>
+									<![CDATA[Proceso de soldadura terminado para el cabezal seleccionado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[1]^bEndFixPower</Name>
+								<Comment>
+									<![CDATA[Parte del proceso realizado a potencia fija completado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[2]^iPirometer</Name>
+								<Comment>
+									<![CDATA[Nº de pirometro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[2]^bCellInPirometerRange</Name>
+								<Comment>
+									<![CDATA[La célula está dentro de la zona del pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[2]^bEndProcess</Name>
+								<Comment>
+									<![CDATA[Proceso de soldadura terminado para el cabezal seleccionado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[2]^bEndFixPower</Name>
+								<Comment>
+									<![CDATA[Parte del proceso realizado a potencia fija completado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[3]^iPirometer</Name>
+								<Comment>
+									<![CDATA[Nº de pirometro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[3]^bCellInPirometerRange</Name>
+								<Comment>
+									<![CDATA[La célula está dentro de la zona del pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[3]^bEndProcess</Name>
+								<Comment>
+									<![CDATA[Proceso de soldadura terminado para el cabezal seleccionado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldProcess^SoldProcess[3]^bEndFixPower</Name>
+								<Comment>
+									<![CDATA[Parte del proceso realizado a potencia fija completado]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl</Name>
+								<Comment>
+									<![CDATA[Datos asociados a cada uno de los controles de las lámparas IR]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^bEnable</Name>
+								<Comment>
+									<![CDATA[Habilita funcionamiento del cabezal]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^iOperation</Name>
+								<Comment>
+									<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^nPirometro</Name>
+								<Comment>
+									<![CDATA[Nº de pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^SetTemp</Name>
+								<Comment>
+									<![CDATA[Tª de set asociada]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^PreheatPower</Name>
+								<Comment>
+									<![CDATA[Preheating power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^CoolPower</Name>
+								<Comment>
+									<![CDATA[Cooling power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^bStartPreheat</Name>
+								<Comment>
+									<![CDATA[Start preheating step on each process]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^bStartSoldPower</Name>
+								<Comment>
+									<![CDATA[Start soldering step on each process at fix power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[1]^bStartSoldPID</Name>
+								<Comment>
+									<![CDATA[Start soldering temperature regulation]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^bEnable</Name>
+								<Comment>
+									<![CDATA[Habilita funcionamiento del cabezal]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^iOperation</Name>
+								<Comment>
+									<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^nPirometro</Name>
+								<Comment>
+									<![CDATA[Nº de pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^SetTemp</Name>
+								<Comment>
+									<![CDATA[Tª de set asociada]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^PreheatPower</Name>
+								<Comment>
+									<![CDATA[Preheating power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^CoolPower</Name>
+								<Comment>
+									<![CDATA[Cooling power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^bStartPreheat</Name>
+								<Comment>
+									<![CDATA[Start preheating step on each process]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^bStartSoldPower</Name>
+								<Comment>
+									<![CDATA[Start soldering step on each process at fix power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[2]^bStartSoldPID</Name>
+								<Comment>
+									<![CDATA[Start soldering temperature regulation]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^bEnable</Name>
+								<Comment>
+									<![CDATA[Habilita funcionamiento del cabezal]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^iOperation</Name>
+								<Comment>
+									<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^nPirometro</Name>
+								<Comment>
+									<![CDATA[Nº de pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^SetTemp</Name>
+								<Comment>
+									<![CDATA[Tª de set asociada]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^PreheatPower</Name>
+								<Comment>
+									<![CDATA[Preheating power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^CoolPower</Name>
+								<Comment>
+									<![CDATA[Cooling power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^bStartPreheat</Name>
+								<Comment>
+									<![CDATA[Start preheating step on each process]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^bStartSoldPower</Name>
+								<Comment>
+									<![CDATA[Start soldering step on each process at fix power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[3]^bStartSoldPID</Name>
+								<Comment>
+									<![CDATA[Start soldering temperature regulation]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^bEnable</Name>
+								<Comment>
+									<![CDATA[Habilita funcionamiento del cabezal]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^iOperation</Name>
+								<Comment>
+									<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^nPirometro</Name>
+								<Comment>
+									<![CDATA[Nº de pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^SetTemp</Name>
+								<Comment>
+									<![CDATA[Tª de set asociada]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^PreheatPower</Name>
+								<Comment>
+									<![CDATA[Preheating power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^CoolPower</Name>
+								<Comment>
+									<![CDATA[Cooling power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^bStartPreheat</Name>
+								<Comment>
+									<![CDATA[Start preheating step on each process]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^bStartSoldPower</Name>
+								<Comment>
+									<![CDATA[Start soldering step on each process at fix power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[4]^bStartSoldPID</Name>
+								<Comment>
+									<![CDATA[Start soldering temperature regulation]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^bEnable</Name>
+								<Comment>
+									<![CDATA[Habilita funcionamiento del cabezal]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^iOperation</Name>
+								<Comment>
+									<![CDATA[0=no work, 1=preheating, 2=soldering, 3=cooling]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^nPirometro</Name>
+								<Comment>
+									<![CDATA[Nº de pirómetro asociado al proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^SetTemp</Name>
+								<Comment>
+									<![CDATA[Tª de set asociada]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^PreheatPower</Name>
+								<Comment>
+									<![CDATA[Preheating power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^CoolPower</Name>
+								<Comment>
+									<![CDATA[Cooling power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^bStartPreheat</Name>
+								<Comment>
+									<![CDATA[Start preheating step on each process]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^bStartSoldPower</Name>
+								<Comment>
+									<![CDATA[Start soldering step on each process at fix power]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>SoldControl^SoldControl[5]^bStartSoldPID</Name>
+								<Comment>
+									<![CDATA[Start soldering temperature regulation]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>HMIProcessPirometer</Name>
+								<Comment>
+									<![CDATA[HMI, Tª del pirometro asociado a cada proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>HMIProcessPower</Name>
+								<Comment>
+									<![CDATA[HMI, Potencia real de cada cabezal de soldadura]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>HMICellPirometer</Name>
+								<Comment>
+									<![CDATA[HMI, Tº de los pirómetros]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>rConsignaCalor</Name>
+								<Comment>
+									<![CDATA[Consigna de calor, area Tª-Tiempo, para terminar el proceso]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>HMIActualTemp</Name>
+								<Comment>
+									<![CDATA[HMI, Temperatura dada por el termopar]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>GVL.st_productionData</Name>
+							<Comment>
+								<![CDATA[PRODUCTION STRUCT]]>
+							</Comment>
+							<Type GUID="{F8A8AA0A-8B06-4168-AC4D-298B6382D99A}">DB_ProductionData</Type>
+							<SubVar>
+								<Name>Maq_OK</Name>
+								<Comment>
+									<![CDATA[HMI, Condiciones  generales de máquina (seguridades, hardware, ...)]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>M_Auto</Name>
+								<Comment>
+									<![CDATA[HMI, Máquina en funcionamiento automático]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>PartOK</Name>
+								<Comment>
+									<![CDATA[HMI, [1]-Contador parcial de células OK; [2]-Contador parcial de strings OK; [3]-Contador parcial de paneles OK; ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>PartNOK</Name>
+								<Comment>
+									<![CDATA[HMI, [1]-Contador parcial de células rechazadas en visión; [2]-Contador parcial de strings rechazados en stringcheck;]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>PartTotal</Name>
+								<Comment>
+									<![CDATA[HMI, [1]- Contador total de células; [2]-Contador total de strings; [3]-Contador total de paneles; ]]>
+								</Comment>
+							</SubVar>
+							<SubVar>
+								<Name>PartTime</Name>
+								<Comment>
+									<![CDATA[HMI, [1]- Tiempo de ciclo de la última célula; [2]- Tiempo de ciclo del último string; [3]- Tiempo de ciclo del último panel;]]>
+								</Comment>
+							</SubVar>
+						</Var>
+						<Var>
+							<Name>GVL.st_alarms</Name>
+							<Comment>
+								<![CDATA[ALARMS]]>
+							</Comment>
+							<Type GUID="{52664FD5-1D23-41A3-A1AE-6429D14648F8}">IPC_Alarm</Type>
+						</Var>
+					</Vars>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+	</Project>
+</TcSmProject>
